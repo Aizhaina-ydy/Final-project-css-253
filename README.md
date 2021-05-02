@@ -1,23 +1,4 @@
 # Final-project-css-253
-
-import requests # Send network request and return response data (API) HTTP library
-import re # A module for processing regular expression
-from bs4 import BeautifulSoup # A web parsing library
-
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                         'Chrome/89.0.4389.90 Safari/537.36 Edg/89.0.774.63'}
-
-# Get the video name and author
-url = 'https://www.bilibili.com/video/BV1hv41167AZ?from=search&seid=2994033640821292376'
-response = requests.get(url, headers)
-response.encoding = 'utf-8'
-page_text = response.text
-soup = BeautifulSoup(page_text, 'lxml')
-video_title = soup.find('span', class_='tit tr-fix').text
-print('Video name：' + video_title)
-uploader = soup.find('a', attrs={'report-id': 'name'}).text.strip()
-print('Author：' + uploader)
-
 # Get the barrage file
 cid = '203530835'
 xml = 'https://api.bilibili.com/x/v1/dm/list.so?oid={}'.format(cid)
